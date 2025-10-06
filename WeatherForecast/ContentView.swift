@@ -9,13 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HStack {
+            DayForecast()
+            
+            .padding()
+            VStack {
+                Text("Tue")
+                Text("High: 28")
+                Text("Low: -8")
+                Image(systemName: "cloud.snow")
+                    .foregroundStyle(Color.blue)
+                    .shadow(radius: 4)
+          
+
+            }
+            .padding()
+            
         }
-        .padding()
+    }
+}
+
+struct DayForecast: View {
+    var body: some View {
+        VStack {
+            Text("Mon")
+            Text("High: 48")
+            Text("Low: 38")
+            Image(systemName: "sun.max")
+                .foregroundStyle(Color.yellow)
+                .shadow(radius: 4)
+        }
     }
 }
 

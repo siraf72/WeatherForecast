@@ -12,6 +12,7 @@ struct WeatherForecastApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+           // DayForecast()
         }
     }
 }
