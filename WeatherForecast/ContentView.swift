@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HStack {
-            DayForecast(day: "Mon", highTemp: 50, lowTemp: 4)
-            DayForecast(day: "Tue", highTemp: 20, lowTemp: 30)
-
+            DayForecast(day: "Mon", highTemp: 10, lowTemp: 4)
+            DayForecast(day: "Tue", highTemp: 20, lowTemp: 3)
+            DayForecast(day: "Wed", highTemp: 40, lowTemp: 33)
             }
             .padding()
             
@@ -43,10 +43,8 @@ struct DayForecast: View {
     }
     
     var iconColor: Color {
-        
         if isCold {
             return Color.blue
-            
         } else {
             return Color.yellow
         }
@@ -55,11 +53,17 @@ struct DayForecast: View {
             
             VStack {
                 Text(day)
-                Text("High \(highTemp) º")
-                Text("Low \(lowTemp)º")
+                    .font(.largeTitle)
                 Image(systemName: iconName)
                     .foregroundStyle(iconColor)
                     .shadow(radius: 4)
+                    .font(.largeTitle)
+                Text("High \(highTemp) º")
+                    .fontWeight(Font.Weight.semibold)
+                    .padding(5)
+            
+                Text("Low \(lowTemp)º")
+                
                 
             }
             .padding()
