@@ -10,38 +10,62 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HStack {
-            DayForecast()
-            
-            .padding()
-            VStack {
-                Text("Tue")
-                Text("High: 28")
-                Text("Low: -8")
-                Image(systemName: "cloud.snow")
-                    .foregroundStyle(Color.blue)
-                    .shadow(radius: 4)
-          
+            DayForecast(day: "Mon", highTemp: 50, lowTemp: 4)
+            DayForecast(day: "Tue", highTemp: 20, lowTemp: 30)
 
             }
             .padding()
             
-        }
     }
 }
 
 struct DayForecast: View {
-    var body: some View {
-        VStack {
-            Text("Mon")
-            Text("High: 48")
-            Text("Low: 38")
-            Image(systemName: "sun.max")
-                .foregroundStyle(Color.yellow)
-                .shadow(radius: 4)
+    let day: String
+    let highTemp: Int
+    let lowTemp: Int
+    
+    var isCold: Bool {
+        if lowTemp < 10 {
+            return true}
+        else {
+            return false}
+        }
+    
+    
+    var iconName: String {
+        
+        if isCold {
+            return "cloud.rain.fill"
+            
+        } else {
+            return "sun.max.fill"
         }
     }
-}
-
+    
+    var iconColor: Color {
+        
+        if isCold {
+            return Color.blue
+            
+        } else {
+            return Color.yellow
+        }
+    }
+        var body: some View {
+            
+            VStack {
+                Text(day)
+                Text("High \(highTemp) º")
+                Text("Low \(lowTemp)º")
+                Image(systemName: iconName)
+                    .foregroundStyle(iconColor)
+                    .shadow(radius: 4)
+                
+            }
+            .padding()
+        }
+    }
+    
 #Preview {
     ContentView()
 }
